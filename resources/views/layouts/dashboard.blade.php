@@ -6,14 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <!-- asset('css/bootstrap.min.css') = '/css/bootstrap.min.css' -->
+    @stack('css')
 </head>
 
 <body>
 
     <header class="py-2 bg-dark text-white mb-4">
         <div class="container">
-            <h1 class="h3">{{ config('app.name') }}</h1>
+            <div class="d-flex">
+                <h1 class="h3">{{ config('app.name') }}</h1>
+            {{-- @if(Auth::guard('web')->check()) --}}
+            @auth('web')
+            <div class="ms-auto">
+                Hi, {{ Auth::guard('web')->user()->name }}
+                | <a href="#" onclick="document.getElementById('logout').submit()">Logout</a>
+                    <form id="logout" class="d-none" action="{{ route('logout', 'web') }}" method="post">
+                        @csrf
+                    </form>
+            </div>
+            @endauth
+
+            </div>
+            
         </div>
     </header>
 
@@ -25,9 +41,9 @@
 
                 <nav>
 
-                    <ul class="nav flex-column">
+                    <ul class="nav nav-pills flex-column">
                         <li class="nav-item"><a href="" class="nav-link">Dashborad</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Categories</a></li>
+                        <li class="nav-item"><a href="{{ route('admin.categories.index') }}" class="nav-link active">Categories</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Products</a></li>
                     </ul>
 
@@ -35,22 +51,22 @@
             </aside>
             <main class="col-md-9">
                 <div class="mb-4">
-                    <h3 class="text-primary">@yield('title')</h3>
+                    <h3 class="text-primary">{{ $title ?? 'Defalut Title' }}</h3>
+                    <h3 class="text-primary">{{ $subtitle ?? 'sub Title' }}</h3>
+                    
                 </div>
-                @if (session()->has('success') )
-                <div class="alert alert-success">
-                    {{ session()->get('success') }}
-                </div>
-                @endif
-
-                @yield('content')
+                
+                
+                {{ $slot }}
+                
             </main>
         </div>
 
 
     </div>
     </div>
-
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+@stack('js')
 </body>
 
 </html>

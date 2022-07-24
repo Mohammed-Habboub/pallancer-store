@@ -1,8 +1,4 @@
-@extends('layouts.dashboard')
-
-@section('title', 'Create Categoryt')
-
-@section('content')
+<x-dashboard-layout title="Add Categoryt" >
 
 
         <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
@@ -15,4 +11,4 @@
 
     </form>
 
-@endsection
+</x-dashboard-layout>
