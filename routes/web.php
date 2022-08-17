@@ -6,9 +6,12 @@ use App\Http\Controllers\Auth\Stores\LoginController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\UsersController;
+<<<<<<< HEAD
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
+=======
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +23,7 @@ use App\Http\Controllers\ProductsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
 Route::get('/register', function () {
     return view('auth.register');
 }); 
@@ -32,14 +36,54 @@ Route::post('cart', [CartController::class, 'store']);
 
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('checkout', [CheckoutController::class, 'store']);
+=======
+
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth:web,store'])->name('dashboard');
+// require __DIR__.'/auth.php';
+
+Route::get('/stores/login', [LoginController::class, 'create'])
+                ->middleware('guest:store')
+                ->name('stores.login');
+Route::post('/stores/login', [LoginController::class, 'store'])
+                ->middleware('guest:store');
+
+Route::namespace('Admin')
+    ->prefix('admin')
+    ->as('admin.')
+    ->middleware('auth', 'user.type:admin,store')
+    ->group(function() {
+        
+        /* Route::group([
+            'prefix' => 'categories',
+            'as' => 'categories.',
+        ], function() {
+            // admin.categories.index
+            Route::get('/', 'CategoriesController@index')->name('index');
+            // admin.categories.create
+            Route::get('/create', 'CategoriesController@create')->name('create');
+            Route::get('/{id}', 'CategoriesController@show')->name('show');
+            Route::post('/', [CategoriesController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [CategoriesController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [CategoriesController::class, 'update'])->name('update');
+            Route::delete('/{id}', [CategoriesController::class, 'destroy'])->name('destroy');
+        }); */
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
 
 
+        Route::get('categories/trash', [CategoriesController::class, 'trash'])->name('categories.trash');
+        Route::put('categories/trash/{id}', [CategoriesController::class, 'restore'])->name('categories.restore');
+        Route::delete('categories/trash/{id}', [CategoriesController::class, 'forceDelete'])->name('categories.force-delete');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 // require __DIR__.'/auth.php';
 
+<<<<<<< HEAD
 Route::get('/stores/login', [LoginController::class, 'create'])
                 
                 ->name('stores.login');
@@ -85,6 +129,20 @@ Route::namespace('Admin')
             'index' => 'products.index',
         ]);
 
+=======
+        Route::resources([
+            'categories' => 'CategoriesController',
+            'products' => 'ProductsController',
+            'roles' => 'RolesController'
+        ]);
+
+        /* Route::resource('categories', 'categoriesController');
+        
+        Route::resource('products', 'ProductsController')->names([
+            'index' => 'products.index',
+        ]);
+
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
         Route::resource('roles', 'RolesController'); */
        
     });

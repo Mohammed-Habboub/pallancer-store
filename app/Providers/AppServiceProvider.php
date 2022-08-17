@@ -5,8 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
+=======
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+<<<<<<< HEAD
 
         $this->app->bind('cart.id', function(){
             $id = Cookie::get('cart_id');
@@ -40,6 +44,8 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
+=======
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
         Validator::extend('filter', function ($attribute, $value, $param) {
             foreach ($param as $word) {
 

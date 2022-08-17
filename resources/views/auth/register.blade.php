@@ -6,7 +6,11 @@
 
         <x-jet-validation-errors class="mb-4" />
 
+<<<<<<< HEAD
         <form method="POST" action="/register ">
+=======
+        <form method="POST" action="{{ route('register') }}">
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
             @csrf
 
             <div>

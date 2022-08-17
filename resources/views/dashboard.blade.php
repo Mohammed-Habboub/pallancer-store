@@ -1,5 +1,8 @@
 <x-app-layout>
+<<<<<<< HEAD
     
+=======
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}

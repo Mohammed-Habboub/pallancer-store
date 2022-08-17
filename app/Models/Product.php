@@ -34,14 +34,24 @@ class Product extends Model
     /*protected $with = [
         'category', 'store'
     ];*/
+<<<<<<< HEAD
     /* protected static function booted()
+=======
+    protected static function booted()
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
     {
         static::addGlobalScope('in-stock', function(Builder $builder) {
             $builder->where('status', '=', 'in-stock');
         });
+<<<<<<< HEAD
     } */ 
 
      /* public function scopeSoldout(Builder $builder)
+=======
+    }
+
+    public function scopeSoldout(Builder $builder)
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
     {
         $builder->where('status', '=', 'sold-out');
     }
@@ -49,7 +59,11 @@ class Product extends Model
     public function scopeStatus(Builder $builder, $status = 'in-stock')
     {
         $builder->where('status', '=', $status);
+<<<<<<< HEAD
     } */
+=======
+    }
+>>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
 
     public function category()
     {
