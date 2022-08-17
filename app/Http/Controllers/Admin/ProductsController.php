@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-<<<<<<< HEAD
+
 //use App\Models\Product::withoutGlobaleScope();
-=======
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
+
 
 class ProductsController extends Controller
 {
@@ -29,13 +29,13 @@ class ProductsController extends Controller
         $products = Product::with('category')
         ->latest()
         ->orderBy('name', 'ASC')
-<<<<<<< HEAD
+
         //->withoutGlobalScopes()
         //->status('in-stock')
-=======
+
         ->withoutGlobalScopes()
         ->status('in-stock')
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
         ->paginate(5);//// number of item the display in page
         return view('admin.products.index', [
             'products' => $products,
@@ -134,19 +134,19 @@ class ProductsController extends Controller
         /*if (!Gate::allows('products.edit')) {
             abort(403);
         }*/
-<<<<<<< HEAD
+
         //Gate::authorize('products.edit');
         
 
         $product = Product::findOrFail($id);
        $tags = $product->tags()->pluck('name')->toArray();
-=======
+
         Gate::authorize('products.edit');
         
 
         $product = Product::withoutGlobaleScope('in-stock')->findOrFail($id);
         $tags = $product->tags()->pluck('name')->toArray();
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
        
         return view('admin.products.edit',[
             'product' => $product,

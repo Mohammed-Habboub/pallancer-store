@@ -6,12 +6,9 @@ use App\Http\Controllers\Auth\Stores\LoginController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\UsersController;
-<<<<<<< HEAD
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductsController;
-=======
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +20,7 @@ use App\Http\Controllers\ProductsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-<<<<<<< HEAD
+
 Route::get('/register', function () {
     return view('auth.register');
 }); 
@@ -36,7 +33,7 @@ Route::post('cart', [CartController::class, 'store']);
 
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('checkout', [CheckoutController::class, 'store']);
-=======
+
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -51,114 +48,69 @@ Route::get('/stores/login', [LoginController::class, 'create'])
 Route::post('/stores/login', [LoginController::class, 'store'])
                 ->middleware('guest:store');
 
-Route::namespace('Admin')
-    ->prefix('admin')
-    ->as('admin.')
-    ->middleware('auth', 'user.type:admin,store')
-    ->group(function() {
-        
-        /* Route::group([
-            'prefix' => 'categories',
-            'as' => 'categories.',
-        ], function() {
-            // admin.categories.index
-            Route::get('/', 'CategoriesController@index')->name('index');
-            // admin.categories.create
-            Route::get('/create', 'CategoriesController@create')->name('create');
-            Route::get('/{id}', 'CategoriesController@show')->name('show');
-            Route::post('/', [CategoriesController::class, 'store'])->name('store');
-            Route::get('/{id}/edit', [CategoriesController::class, 'edit'])->name('edit');
-            Route::put('/{id}', [CategoriesController::class, 'update'])->name('update');
-            Route::delete('/{id}', [CategoriesController::class, 'destroy'])->name('destroy');
-        }); */
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
-
-
-        Route::get('categories/trash', [CategoriesController::class, 'trash'])->name('categories.trash');
-        Route::put('categories/trash/{id}', [CategoriesController::class, 'restore'])->name('categories.restore');
-        Route::delete('categories/trash/{id}', [CategoriesController::class, 'forceDelete'])->name('categories.force-delete');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-// require __DIR__.'/auth.php';
-
-<<<<<<< HEAD
-Route::get('/stores/login', [LoginController::class, 'create'])
-                
-                ->name('stores.login');
-Route::post('/stores/login', [LoginController::class, 'store'])
-                ;
-
-Route::namespace('Admin')
-    ->prefix('admin')
-    ->as('admin.')
-    
-    ->group(function() {
-        
-        /* Route::group([
-            'prefix' => 'categories',
-            'as' => 'categories.',
-        ], function() {
-            // admin.categories.index
-            Route::get('/', 'CategoriesController@index')->name('index');
-            // admin.categories.create
-            Route::get('/create', 'CategoriesController@create')->name('create');
-            Route::get('/{id}', 'CategoriesController@show')->name('show');
-            Route::post('/', [CategoriesController::class, 'store'])->name('store');
-            Route::get('/{id}/edit', [CategoriesController::class, 'edit'])->name('edit');
-            Route::put('/{id}', [CategoriesController::class, 'update'])->name('update');
-            Route::delete('/{id}', [CategoriesController::class, 'destroy'])->name('destroy');
-        }); */
-
-
-        Route::get('categories/trash', [CategoriesController::class, 'trash'])->name('categories.trash');
-        Route::put('categories/trash/{id}', [CategoriesController::class, 'restore'])->name('categories.restore');
-        Route::delete('categories/trash/{id}', [CategoriesController::class, 'forceDelete'])->name('categories.force-delete');
-
-
-        Route::resources([
-            'categories' => 'CategoriesController',
-            'products' => 'ProductsController',
-            'roles' => 'RolesController'
-        ]);
-
-        /* Route::resource('categories', 'categoriesController');
-        
-        Route::resource('products', 'ProductsController')->names([
-            'index' => 'products.index',
-        ]);
-
-=======
-        Route::resources([
-            'categories' => 'CategoriesController',
-            'products' => 'ProductsController',
-            'roles' => 'RolesController'
-        ]);
-
-        /* Route::resource('categories', 'categoriesController');
-        
-        Route::resource('products', 'ProductsController')->names([
-            'index' => 'products.index',
-        ]);
-
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
-        Route::resource('roles', 'RolesController'); */
-       
-    });
-
-//Route::resource('admin/categories', 'Admin\CategoriesController');
-
-Route::get('admin/tags/{id}/products', [TagsController::class, 'products']);
-
-Route::get('admin/users/{id}', [UsersController::class, 'show'])->name('admin.users.show');
-
-Route::prefix('admin/categories')
-    ->namespace('Admin')
-    ->as('admin.categories.')
-    ->group(function() {
-        
-    });
+                Route::namespace('Admin')
+                ->prefix('admin')
+                ->as('admin.')
+                ->middleware('auth', 'user.type:super-admin,admin,store')
+                ->group(function() {
+            
+                    Route::get('notifications', [NotificationsController::class, 'index'])->name('notifications');
+            
+                    Route::get('orders/{order}/print', [OrdersController::class, 'print']);
+                    
+                    /*Route::group([
+                        'prefix' => 'categories',
+                        'as' => 'categories.',
+                    ], function() {
+                        // admin.categories.index
+                        Route::get('/', 'CategoriesController@index')->name('index');
+                        // admin.categories.create
+                        Route::get('/create', 'CategoriesController@create')->name('create');
+                        Route::get('/{id}', 'CategoriesController@show')->name('show');
+                        Route::post('/', [CategoriesController::class, 'store'])->name('store');
+                        Route::get('/{id}/edit', [CategoriesController::class, 'edit'])->name('edit');
+                        Route::put('/{id}', [CategoriesController::class, 'update'])->name('update');
+                        Route::delete('/{id}', [CategoriesController::class, 'destroy'])->name('destroy');
+                    });*/
+            
+                    Route::get('categories/trash', [CategoriesController::class, 'trash'])->name('categories.trash');
+                    Route::put('categories/trash/{id}', [CategoriesController::class, 'restore'])->name('categories.restore');
+                    Route::delete('categories/trash/{id}', [CategoriesController::class, 'forceDelete'])->name('categories.force-delete');
+                    
+            
+                    Route::get('products/export', 'ProductsController@export')
+                        ->name('products.export');
+                    Route::get('products/import', 'ProductsController@importView')
+                        ->name('products.import');
+                    Route::post('products/import', 'ProductsController@import');
+            
+            
+                    Route::resources([
+                        'categories' => 'CategoriesController',
+                        'products' => 'ProductsController',
+                        'roles' => 'RolesController'
+                    ]);
+            
+                    /*Route::resource('categories', 'CategoriesController');
+                    Route::resource('products', 'ProductsController')->names([
+                        'index' => 'products.index',
+                    ]);
+                    Route::resource('roles', 'RolesController');*/
+                });
+            
+            
+            //Route::resource('admin/categories', 'Admin\CategoriesController');
+            
+            Route::get('admin/tags/{id}/products', [TagsController::class, 'products']);
+            
+            Route::get('admin/users/{id}', [UsersController::class, 'show'])->name('admin.users.show');
+            
+            Route::prefix('admin/categories')
+                ->namespace('Admin')
+                ->as('admin.categories.')
+                ->group(function() {
+                    
+                });
 
 Route::get('regexp', function() {
 

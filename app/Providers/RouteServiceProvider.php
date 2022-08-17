@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\Domain;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -17,11 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-<<<<<<< HEAD
-    public const HOME = '/admin/products';
-=======
     public const HOME = '/dashboard';
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
 
     /**
      * The controller namespace for the application.
@@ -30,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-     protected $namespace = 'App\\Http\\Controllers';
+    protected $namespace = 'App\\Http\\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

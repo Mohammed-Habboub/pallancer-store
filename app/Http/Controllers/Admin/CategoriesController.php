@@ -45,11 +45,11 @@ class CategoriesController extends Controller
 
         // Eager loading (with)| (load)التحميل المسبق أحمل العلاقة مسبقا للسرعة في تنفيذ الاستعلام
         ->with('parent') // for only on parent filed no on the all the failds
-<<<<<<< HEAD
+
         //->withoutGlobaleScope(ActiveStatusScope::class)
-=======
+
         ->withoutGlobaleScope(ActiveStatusScope::class)
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
         ->get();
         //SELECT * FROM categories
         //SELECT * FORM categories WHERE id IN (...)
@@ -65,11 +65,11 @@ class CategoriesController extends Controller
 
     public function create()
     {
-<<<<<<< HEAD
+
         //$this->authorize('create', Category::class);
-=======
+
         $this->authorize('create', Category::class);
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
         $parents = Category::orderby('name', 'asc')->get();
 
         return view('admin.categories.create', [
@@ -82,11 +82,11 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-<<<<<<< HEAD
+
         //$this->authorize('create', Category::class);
-=======
+
         $this->authorize('create', Category::class);
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
         /* // Method 1 for Validat
         // 
         $validator = Validator::make($request->all(), [
@@ -137,11 +137,11 @@ class CategoriesController extends Controller
     public function show($id)
     {
         $category = Category::findOrFail($id);
-<<<<<<< HEAD
+
        // $this->authorize('view', $category);
-=======
+
         $this->authorize('view', $category);
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
 
         return view('admin.categories.show', [
                 'category' => $category,
