@@ -1,5 +1,5 @@
 <x-front-layout>
-<<<<<<< HEAD
+
 <!-- <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Whatch out!</h4>
   <p>Dear, to go to the control panel of the site I created, click on the following link: <a href="/register" ><button type="button" class="btn btn-primary">Dashboard</button></a>.</p>
@@ -8,8 +8,8 @@
   <p class="mb-0">A glimpse of this site that I created. I advise you to visit the link : <e> https://github.com/Mohammed-Habboub</e>
     <span style="color: red;" > ( wish you the best. )</span></p>
 </div> -->
-=======
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
+
       <div class="ps-banner">
         <div class="rev_slider fullscreenbanner" id="home-banner">
           <ul>
@@ -61,12 +61,13 @@
                     <div class="ps-shoe mb-30">
                       <div class="ps-shoe__thumbnail">
                         <div class="ps-badge"><span>New</span></div>
-<<<<<<< HEAD
+
                         <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="{{ $product->image_url }}" alt=""><a class="ps-shoe__overlay"
                          href="{{ route('products.show', $product->slug) }}"></a>
-=======
+
                         <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="{{ $product->image_url }}" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
+
                       </div>
                       <div class="ps-shoe__content">
                         <div class="ps-shoe__variants">
@@ -79,11 +80,11 @@
                             <option value="2">5</option>
                           </select>
                         </div>
-<<<<<<< HEAD
+
                         <div class="ps-shoe__detail"><a class="ps-shoe__name" href="{{ route('products.show', $product->slug) }}">{{ $product->name }}</a>
-=======
+
                         <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">{{ $product->name }}</a>
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
                           <p class="ps-shoe__categories"><a href="#">{{ $product->category->slug }}</a></p><span class="ps-shoe__price">
                             <del>£{{ $product->price }}</del> £ {{ $product->sale_price }}</span>
                         </div>

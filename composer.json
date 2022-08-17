@@ -12,12 +12,10 @@
         "laravel/jetstream": "^2.9",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-<<<<<<< HEAD
         "livewire/livewire": "^2.5",
-        "symfony/intl": "^5.4"
-=======
+        "symfony/intl": "^5.4",
         "livewire/livewire": "^2.5"
->>>>>>> 3ee9d0a1320a54a3d86cc3c0eb677cb4853920cb
+
     },
     "require-dev": {
         "facade/ignition": "^2.5",
