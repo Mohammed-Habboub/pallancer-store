@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Method 1
+/* Route::resource('products', 'Api\ProductsController')->except([
+    'create', 'edit'
+]);*/ 
+
+
+// Method 2
+Route::apiResource('products', 'Api\ProductsController');
